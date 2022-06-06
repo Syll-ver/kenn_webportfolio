@@ -63,173 +63,13 @@
 
 <script>
 import Header from "./header.vue";
+import { mapGetters } from 'vuex';
 export default {
 components: {
   Header
 },
 data() {
   return {
-    panels: [
-      {
-        id: "workExp",
-        title: "Work Experiences",
-        icon: "users",
-        contents: [
-          {
-            title: "UI/UX Designer (UX)", 
-            sub: "Biotech Farms Inc.", 
-            link: "",
-            note: "July 2020 - Present",
-            cont: [
-              {li: "Designing, maintaining and updating user-friendly web applications."},
-              {li: "Collaborating with SQA and DevOps in devising solutions."},
-              {li: "Integrating front-end application with the back-end."},
-              {li: "Validating changes by testing programs."},
-            ]
-          },
-          {
-            title: "Learning Management System Assistant", 
-            sub: "Mindanao State University - GSC", 
-            link: "",
-            note: "January 2020 - May 2020",
-            cont: 
-            [
-              {li: "Assisted in faculty training for Learning Management System."},
-              {li: "Served as coach for digitizing course content and deploying it in the LMS Server of MSU General Santos."}
-            ]
-          },
-        ]
-      },
-      {
-        id: "projEnv",
-        title: "Projects Involved",
-        icon: "project-diagram",
-        contents: [
-          {
-            title: "Farmer's Delivery Slip System", 
-            sub: "Primary UX Designer", 
-            note: "Vue, NuxtJS, Bootstrap",
-            link: "",
-            cont: [
-              {li: "A web-based application designed to eliminate manual booking of delivery transactions and issuance of delivery slips to farmers."},
-              {li: "This application includes printing of automated delivery slips (through POS printer), FSQR integration and tagging of Purchase Order from SAP."},
-              {li: "Passed on to me for frontend and network printing maintenance."},
-              {li: "Used Axios for API integration."},
-            ]
-          },
-          {
-            title: "Revive Booking System", 
-            sub: "Primary UX Designer", 
-            note: "React, NextJS, Feather Socket.io, Material UI, Axios, Luxon",
-            link: "",
-            cont: [
-              {li: "A web-based application created to ease operations."},
-              {li: " in terms of enrollment of farmers, booking of farm equipments, storing of farmer and farm equipment, and report generation."}
-            ]
-          },
-          {
-            title: "Company Website", 
-            sub: "UI / UX Designer", 
-            link: "",
-            note: "Wordpress, Yoast SEO",
-            cont: [
-              {li: "Used wordpress for this project."},
-              {li: "Created my own wordpress template from scratch."},
-              {li: "Was able to train regarding SEO."},
-            ]
-          },
-        ]
-      },
-      {
-        id: "educBac",
-        title: "Educational Background",
-        icon: "book-open",
-        contents: [
-          {
-            title: "Notre Dame of Dadiangas University (NDDU)", 
-            sub: "BS Computer Science", 
-            link: "",
-            note: "SY: 2015 - 2019",
-            cont: [
-              {li: "Montagne Scholar"},
-              {li: "Junior Programers Group (Documentation Head)."},
-              {li: "Course Representative."},
-            ]
-          }
-        ]
-      },
-      {
-        id: "others",
-        title: "Other Relevant Experiences",
-        icon: "star",
-        contents: [
-          {
-            title: "Visual Artistry", 
-            sub: "Present", 
-            link: "",
-            note: "Self-taught",
-            cont: [
-              {li: "Able to create colored and black n' white portraits."},
-              {li: "Character designs and sketches."},
-              {li: "Digital and Traditional ways of creating art pieces."}
-            ]
-          },
-          {
-            title: "Web Résumé and Portfolio", 
-            sub: "Year 2022", 
-            link: "",
-            note: "Vue, Nuxt, SASS, Github, Netlify",
-            cont: [
-              {li: "I made this very webiste you're looking right now."},
-              {li: "I guess this could count as a part of my portfolio."},
-            ]
-          },
-          {
-            title: "SAP Be Visual! Sketching Basics for IT Business, Passer", 
-            sub: "December 2020", 
-            link: "",
-            note: "Certification",
-            cont: []
-          },
-        ]
-      },
-      {
-        id: "portf",
-        title: "Portfolio",
-        icon: "folder",
-        contents: [
-          {
-            title: "Graphic Designs", 
-            sub: "",
-            link: "https://github.com",
-            note: "Graphic designs from previous works",
-            cont: []
-          },
-          {
-            title: "Digital Arts", 
-            sub: "",
-            link: "https://github.com",
-            note: "Using Huion pentab and Adobe Photoshop",
-            cont: []
-          },
-          {
-            title: "Portraits", 
-            sub: "",
-            link: "https://github.com",
-            note: "Colored and Graphite pencils, and Vellum paper",
-            cont: []
-          },
-          {
-            title: "Website Designs", 
-            sub: "",
-            link: "https://github.com",
-            note: "Web Design",
-            cont: []
-          }
-        ]
-      },
-      
-    ],
   }
 },
 methods: {
@@ -261,17 +101,21 @@ methods: {
       }
     }
   },
-},
-mounted() {
+  },
+  mounted() {
 
-},
-components: {
-
-},
-created() {
-},
-computed: {
-  
-}
+  },
+  created() {
+  },
+  computed: {
+    ...mapGetters({
+      panels: "getPanels",
+      listProjects: "getProjects",
+      listProjectLang: "getProjectLang"
+    })
+  },
+  async beforeCreate() {
+    // await this.$store.dispatch("getProjects")
+  }
 }
 </script>
